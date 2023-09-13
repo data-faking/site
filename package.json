@@ -33,10 +33,12 @@
     "t:build:webpack": "turbo run build:webpack"
   },
   "dependencies": {
+    "data-faking": "^0.0.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.15.0",
     "recoil": "^0.7.7",
+    "sass": "^1.66.1",
     "typescript": "5.2.2"
   },
   "devDependencies": {
@@ -110,6 +112,8 @@
     "vite-plugin-eslint": "^1.8.1",
     "vite-plugin-html": "^3.2.0",
     "vite-plugin-svgr": "^3.2.0",
+    "vite-plugin-top-level-await": "^1.3.1",
+    "vite-plugin-wasm": "^3.2.2",
     "web-vitals": "^3.4.0",
     "webpack": "^5.88.2",
     "webpack-bundle-analyzer": "^4.9.1",

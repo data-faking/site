@@ -8,6 +8,8 @@ import checker from "vite-plugin-checker";
 import eslint from "vite-plugin-eslint";
 import { visualizer } from "rollup-plugin-visualizer";
 import dns from "dns";
+import wasm from "vite-plugin-wasm";
+import topLevelAwait from "vite-plugin-top-level-await";
 
 dns.setDefaultResultOrder("verbatim");
 
@@ -64,6 +66,9 @@ export default defineConfig(({ command, mode }) => {
 				eslint({
 					overrideConfigFile: resolve(__dirname, ".eslintrc.cjs"),
 				}),
+
+				wasm(),
+				topLevelAwait(),
 			],
 
 			resolve: {
@@ -123,6 +128,9 @@ export default defineConfig(({ command, mode }) => {
 				eslint({
 					overrideConfigFile: resolve(__dirname, ".eslintrc.cjs"),
 				}),
+
+				wasm(),
+				topLevelAwait(),
 
 				// NOTE: must be the last plugin
 				// visualizer({

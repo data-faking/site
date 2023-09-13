@@ -17,6 +17,8 @@ import { T_CountStateData, T_SetCountStateData, CountStateData } from "@store/Co
 import { ReactComponent as LogoSVG } from "./logo.svg";
 import CheckboxWithLabel from "./CheckboxWithLabel";
 
+import WasmTime from "./components/wasm_test";
+
 function App() {
 	const getCountState: T_CountStateData = useRecoilValue(CountStateData);
 	const setCountState: T_SetCountStateData = useSetRecoilState(CountStateData);
@@ -123,6 +125,8 @@ function App() {
 			<LogoSVG className="logo" />
 
 			<h1 className="title">React</h1>
+
+			<WasmTime />
 
 			{/* <p>{import.meta.env.VITE_TEST}</p>
 			    <p>{process.env.VITE_TEST}</p> */}

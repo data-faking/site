@@ -74,6 +74,7 @@ module.exports = {
 
 		// NOTE(clearfeld): set to warnings to better work with Storybook
 		"@typescript-eslint/await-thenable": "warn",
-		"react/no-unescaped-entities": "warn"
+		"react/no-unescaped-entities": "warn",
+		"@typescript-eslint/ban-ts-comment": "warn",
 	},
 };
