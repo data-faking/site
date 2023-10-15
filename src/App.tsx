@@ -16,8 +16,10 @@ import {
 //import { ReactComponent as LogoSVG } from "./logo.svg";
 //import CheckboxWithLabel from "./CheckboxWithLabel";
 
-//import WasmTime from "./components/wasm_test";
-import LandingPage from "./components/landing-page";
+// import WasmTime from "./components/wasm_test";
+
+import Navbar from "@src/components/navbar";
+import LandingPage from "@src/components/landing-page";
 
 function App() {
 	//const getCountState: T_CountStateData = useRecoilValue(CountStateData);
@@ -29,6 +31,8 @@ function App() {
 				path="/"
 				element={
 					<>
+						<Navbar />
+
 						<Outlet />
 					</>
 				}

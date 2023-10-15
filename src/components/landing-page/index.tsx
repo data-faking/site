@@ -1,6 +1,6 @@
 import React from 'react'
 import './LandingPage.scss';
-import DarkModeIcon from '../../assets/dark-mode.svg';
+
 import DragHandle from '../../assets/drag-handle.svg';
 import DeleteIcon from '../../assets/delete-icon.svg';
 //TODO resize some heights
@@ -86,12 +86,6 @@ const DummyData = [{
 function LandingPage() {
     return (
         <>
-            <div className='navbar'>
-                <h1 className='navbar__header center'>Data Faking</h1>
-                <button className='navbar__dark-mode-button center'>
-                    <img src={DarkModeIcon} alt='Dark mode icon'></img>
-                </button>
-            </div>
             <div className="content">
                 <div className='content__left'>
                     <div className="content__labels">
@@ -189,4 +183,4 @@ function LandingPage() {
         </>
     )
 }
-export default LandingPage                    
+export default LandingPage

@@ -1,0 +1,23 @@
+.navbar {
+  background-color: var(--navbar-color-bg);
+  display: flex;
+  justify-content: space-between;
+  height: 4rem;
+  align-items: center;
+
+  &__dark-mode-button {
+    width: min-content;
+    height: min-content;
+    border-style: none;
+    margin-right: 1.5rem;
+    background-color: transparent;
+    cursor: pointer;
+  }
+
+  &__header {
+    margin-left: 1.5em;
+    color: var(--color-text);
+    font-size: 1rem;
+    font-weight: 600;
+  }
+}
