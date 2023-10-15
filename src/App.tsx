@@ -7,7 +7,7 @@ import {
 	createBrowserRouter,
 	RouterProvider,
 	Route,
-
+	Outlet
 } from "react-router-dom";
 
 //import { useRecoilValue, useSetRecoilState } from "recoil";
@@ -25,16 +25,21 @@ function App() {
 
 	const router = createBrowserRouter(
 		createRoutesFromElements(
-
 			<Route
 				path="/"
-				element={<LandingPage />}
-			/>
+				element={
+					<>
+						<Outlet />
+					</>
+				}
+			>
+				<Route index element={<LandingPage />} />
+			</Route>,
 		),
 	);
 
 	return (
-		<div className="App">
+		<div>
 			<RouterProvider router={router} />
 		</div>
 	);

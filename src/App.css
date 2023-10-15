@@ -1,19 +1,35 @@
-* {
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,400;0,500;0,700;1,400&display=swap');
+
+html,
+body {
 	margin: 0;
 	padding: 0;
-	box-sizing: border-box;
-	list-style: none;
-}
 
-html, body {
-	height: 100%;
-	font-family: 'IBM Plex Mono', monospace;
-}
+	background-color: #131416;
 
-.App {
-	height: 100%;
-}
+	/*
+	min-height: 100vh;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	font-size: calc(10px + 2vmin);
+	color: white; */
 
-#app {
-	height: 100%;
+	text-align: center;
+
+	font-family:
+		'IBM Plex Mono',
+		-apple-system,
+		BlinkMacSystemFont,
+		"Segoe UI",
+		Roboto,
+		Oxygen,
+		Ubuntu,
+		Cantarell,
+		"Fira Sans",
+		"Droid Sans",
+		"Helvetica Neue",
+		monospace,
+		sans-serif;
 }
