@@ -1,0 +1,167 @@
+$background-color-compliment: #f8f8f8;
+$navbar-background-color: #fff;
+$backgroud-color: #fcfcfc;
+$blue-primary: #006699;
+$border-color: #e7e7e7;
+//Utility classes
+.center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.navbar {
+  background-color: $navbar-background-color;
+  display: flex;
+  justify-content: space-between;
+  height: 4em;
+
+  &__dark-mode-button {
+    width: min-content;
+    height: min-content;
+    border-style: none;
+    margin-top: auto;
+    margin-bottom: auto;
+    margin-right: 1.5em;
+    background-color: transparent;
+    cursor: pointer;
+  }
+  &__header {
+    //background-color: pink;
+    //Layout
+    margin-left: 1.5em;
+    //Typography
+    color: var(--text, #000);
+    font-family: IBM Plex Mono;
+    font-size: 16px;
+    font-weight: bold;
+    line-height: normal;
+  }
+}
+
+.content {
+  background-color: $background-color-compliment;
+  height: 100%;
+  display: grid;
+  gap: 1.5em;
+  padding: 1.5em;
+  justify-content: center;
+  align-items: center;
+  grid-template-columns: 1fr 1fr;
+
+  &__left {
+    height: 100%;
+
+    //wtf if I dont add this I cant get y-overflow scrolling in
+    overflow-y: auto;
+    background-color: $backgroud-color;
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__right {
+    height: 100%;
+    background-color: $backgroud-color;
+    //border: 0.5px solid black;
+    display: flex;
+    padding: 0.75em;
+    overflow: auto;
+
+    &-wrapper {
+      padding: 0.75em;
+    }
+  }
+
+  &__labels {
+    display: flex;
+    justify-content: space-evenly;
+    border-bottom: 2px solid $border-color;
+    padding-top: 2em;
+    padding-bottom: 0.5em;
+    //background-color: #006699;
+    h1 {
+      font-size: 0.75em;
+      //border: 1px solid black;
+    }
+  }
+  &__input-row-area {
+    margin-top: 1em;
+    flex-grow: 1;
+    padding: 0.75em;
+    overflow-y: scroll;
+    height: 100%;
+  }
+
+  &__input-row {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    margin-bottom: 1em;
+    //background-color: pink;
+    button {
+      display: flex;
+      background-color: transparent;
+      border: none;
+      cursor: pointer;
+    }
+    input {
+      width: 176px;
+      height: 32px;
+    }
+  }
+  &__button-area {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    border-top: 1px solid $border-color;
+    border-bottom: 1px solid $border-color;
+    height: 3em;
+    &-left {
+      height: 100%;
+      border-right: 1px solid $border-color;
+      padding: 0.75em 2em;
+    }
+
+    &-right {
+      height: 100%;
+      border-left: 1px solid $border-color;
+      padding: 0.75em 2em;
+
+      :first-child {
+        margin-right: 1em;
+      }
+    }
+    button {
+      border-radius: 4px;
+      background: $blue-primary;
+      padding: 4px 12px;
+      gap: 8px;
+      border: none;
+      color: #fff;
+      text-align: center;
+      font-size: 16px;
+      font-style: normal;
+      font-weight: 400;
+      line-height: normal;
+    }
+  }
+
+  &__schema-inputs {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    padding: 0.75em;
+    //background-color: navy;
+  }
+
+  &__schema-input-wrapper {
+    //background-color: pink;
+    //border: 1px solid black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    label {
+      margin-right: 0.75em;
+    }
+  }
+}
