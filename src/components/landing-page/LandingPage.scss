@@ -1,0 +1,60 @@
+$background-color-compliment: #f8f8f8;
+$navbar-background-color: #fff;
+$backgroud-color: #fcfcfc;
+
+//Utility classes
+.center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.navbar {
+  background-color: $navbar-background-color;
+  border-bottom: 1px solid gray;
+  display: flex;
+  justify-content: space-between;
+  height: 4em;
+
+  &__dark-mode-button {
+    width: min-content;
+    height: min-content;
+    border-style: none;
+    margin-top: auto;
+    margin-bottom: auto;
+    margin-right: 1.5em;
+    cursor: pointer;
+  }
+  &__header {
+    background-color: pink;
+    //Layout
+    margin-left: 1.5em;
+    //Typography
+    color: var(--text, #000);
+    font-family: IBM Plex Mono;
+    font-size: 16px;
+    font-weight: bold;
+    line-height: normal;
+  }
+}
+
+.content {
+  background-color: $background-color-compliment;
+  height: 100%;
+  display: grid;
+  gap: 1.5em;
+  padding: 1.5em;
+  justify-content: center;
+  align-items: center;
+  grid-template-columns: 1fr 1fr;
+
+  &__data-form {
+    height: 90%;
+    border: 1px solid black;
+  }
+
+  &__data-display {
+    height: 90%;
+    border: 1px solid black;
+  }
+}
