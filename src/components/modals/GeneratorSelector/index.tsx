@@ -77,19 +77,14 @@ function GeneratorSelector(props: I_GeneratorSelectorProps) {
 		}
 
 		setGeneratorRowsState({
-            rows: ns
-        });
+			rows: ns,
+		});
 		props.CloseModal();
 	}
 
 	return (
 		<div className="modal__generator-selector__wrapper">
-			<div
-				style={{
-					display: "flex",
-					placeContent: "space-between",
-				}}
-			>
+			<div className="modal__generator-selector__top-row">
 				<div className="modal__generator-selector__title">Choose a Data Type</div>
 
 				<button onClick={props.CloseModal} className="modal__generator-selector__btn">
@@ -97,11 +92,15 @@ function GeneratorSelector(props: I_GeneratorSelectorProps) {
 				</button>
 			</div>
 
-			<div>
+			<div className="modal__generator-selector__card-wrapper">
 				{df_assoc.map((df: any, didx: number) => {
 					return (
-						<div key={didx} onClick={() => SelectDataType(df)}>
-							<p>{df.title}</p>
+						<div
+							key={didx}
+							onClick={() => SelectDataType(df)}
+							className="modal__generator-selector__card__wrapper"
+						>
+							<p className="modal__generator-selector__card__title">{df.title}</p>
 							<p>{df.ex_data}</p>
 							{/* <p>{df.func()}</p> */}
 

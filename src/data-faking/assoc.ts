@@ -20,7 +20,9 @@ export interface I_DFASSOC {
 
 export const df_func = {
     "Male prefix standard": faking.male_prefix_standard,
-    "Femlae prefix standard": faking.female_prefix_standard,
+    "Female prefix standard": faking.female_prefix_standard,
+    "Male prefix": faking.male_prefix,
+    "Female prefix": faking.female_prefix,
 };
 
 export const df_assoc = [
@@ -33,7 +35,19 @@ export const df_assoc = [
   },
 
   {
-    title: "Femlae prefix standard",
+    title: "Female prefix standard",
+    ex_data: "Mrs.",
+    // func: faking.female_prefix_standard,
+  },
+
+  {
+    title: "Male prefix",
+    ex_data: "Mr.",
+    // func: faking.female_prefix_standard,
+  },
+
+  {
+    title: "Female prefix",
     ex_data: "Mrs.",
     // func: faking.female_prefix_standard,
   },

@@ -1,5 +1,4 @@
 $blue-primary: #006699;
-$border-color: #e7e7e7;
 //Utility classes
 .center {
   display: flex;
@@ -42,7 +41,7 @@ $border-color: #e7e7e7;
   &__labels {
     display: flex;
     justify-content: space-evenly;
-    border-bottom: 2px solid $border-color;
+    border-bottom: 0.125rem solid var(--color-border);
     padding-top: 2em;
     padding-bottom: 0.5em;
     //background-color: #006699;
@@ -80,19 +79,19 @@ $border-color: #e7e7e7;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    border-top: 1px solid $border-color;
-    border-bottom: 1px solid $border-color;
-    height: 3em;
+    border-top: 0.0625rem solid var(--color-border);
+    border-bottom: 0.0625rem solid var(--color-border);
+    height: 5em;
     &-left {
       height: 100%;
-      border-right: 1px solid $border-color;
-      padding: 0.75em 2em;
+      border-right: 0.0625rem solid var(--color-border);
+      padding: 0 2em;
     }
 
     &-right {
       height: 100%;
-      border-left: 1px solid $border-color;
-      padding: 0.75em 2em;
+      border-left: 0.0625rem solid var(--color-border);
+      padding: 0 2em;
 
       :first-child {
         margin-right: 1em;

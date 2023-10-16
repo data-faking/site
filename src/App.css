@@ -17,6 +17,8 @@
 	--navbar-color-bg-hover: #f3f3f3;
 	/* Navbar colours end */
 
+	--color-border: #e7e7e7;
+
 	--color-text: black;
 }
 
@@ -31,6 +33,8 @@
 	--navbar-color-bg: #121212;
 	--navbar-color-bg-hover: #3b3a39;
 	/* Navbar colours end */
+
+	--color-border: #383838;
 
 	--color-text: white;
 }

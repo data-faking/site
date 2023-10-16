@@ -24,6 +24,7 @@ import {
 
 interface I_GeneratorRowProps {
 	row: I_GeneratorRow;
+	RemoveRow: (id: string) => void;
 }
 
 function GeneratorRow(props: I_GeneratorRowProps) {
@@ -43,6 +44,10 @@ function GeneratorRow(props: I_GeneratorRowProps) {
 		});
 	}
 
+	function RemoveRow(): void {
+		props.RemoveRow(props.row.id);
+	}
+
 	return (
 		<div className="content__input-row">
 			<button>
@@ -54,7 +59,7 @@ function GeneratorRow(props: I_GeneratorRowProps) {
 			<input value={props.row.null_str ?? ""} />
 			<input value={props.row.null_percent} />
 
-			<button>
+			<button onClick={RemoveRow}>
 				<DeleteIconSVG className="svg-filter" height="1rem" width="1rem" viewBox="0 0 16 18" />
 			</button>
 		</div>

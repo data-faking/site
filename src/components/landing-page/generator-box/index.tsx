@@ -17,24 +17,45 @@ import GeneratorRow from "./generator-row";
 // NOTE(clearfeld): not a great solution but decent for testing - for the time being.
 import {
 	useRecoilValue,
+	useSetRecoilState,
 	// useSetRecoilState
 } from "recoil";
 import {
 	T_GeneratorRowsStateData,
-	// T_SetGeneratorRowsStateData,
+	T_SetGeneratorRowsStateData,
 	GeneratorRowsStateData,
 	I_GeneratorRow,
 } from "@src/store/GeneratorAtom";
 
-import { GenerateJSON, df_func } from "@src/data-faking/assoc";
+import { GenerateJSON, df_assoc, df_func } from "@src/data-faking/assoc";
 
 function GeneratorLines() {
 	const getGeneratorRowsState: T_GeneratorRowsStateData = useRecoilValue(GeneratorRowsStateData);
+	const setGeneratorRowsState: T_SetGeneratorRowsStateData =
+		useSetRecoilState(GeneratorRowsStateData);
+
+	function RemoveRow(id: string): void {
+		const ns = structuredClone(getGeneratorRowsState);
+
+		for (let i = 0; i < ns.rows.length; ++i) {
+			// const element = array[i];
+			if(ns.rows[i].id === id) {
+				ns.rows.splice(i, 1);
+				break;
+			}
+		}
+
+		setGeneratorRowsState(ns);
+	}
 
 	return (
 		<div className="content__input-row-area">
 			{getGeneratorRowsState.rows.map((row: I_GeneratorRow, ridx: number) => {
-				return <GeneratorRow key={ridx} row={row} />;
+				return <GeneratorRow
+				key={ridx}
+				row={row}
+				RemoveRow={RemoveRow}
+				/>;
 			})}
 		</div>
 	);
@@ -42,6 +63,8 @@ function GeneratorLines() {
 
 function GeneratorBox() {
 	const getGeneratorRowsState: T_GeneratorRowsStateData = useRecoilValue(GeneratorRowsStateData);
+	const setGeneratorRowsState: T_SetGeneratorRowsStateData =
+		useSetRecoilState(GeneratorRowsStateData);
 
 	function GenerateFile(): void {
 		if (getGeneratorRowsState.rows) {
@@ -67,6 +90,20 @@ function GeneratorBox() {
 		}
 	}
 
+	function AddRow(): void {
+		const ns = structuredClone(getGeneratorRowsState);
+
+		ns.rows.push({
+			id: "-1",
+			field_name: "a",
+			type: df_assoc[0],
+			null_str: "",
+			null_percent: 0,
+		});
+
+		setGeneratorRowsState(ns);
+	}
+
 	return (
 		<>
 			<div className="content__labels">
@@ -80,13 +117,15 @@ function GeneratorBox() {
 
 			<div className="content__button-area">
 				<div className="content__button-area-left center">
-					<button>Add Row</button>
+					<button onClick={AddRow}>Add Row</button>
 				</div>
+
 				<div className="content__button-area-right center">
 					<button onClick={GenerateFile}>Generate</button>
 					<button>Preview</button>
 				</div>
 			</div>
+
 			<div className="content__schema-inputs">
 				<div className="content__schema-input-wrapper">
 					<label htmlFor="number-of-rows"># Rows</label>
@@ -117,4 +156,5 @@ function GeneratorBox() {
 		</>
 	);
 }
+
 export default GeneratorBox;
