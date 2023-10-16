@@ -11,7 +11,50 @@ import GeneratorRow from "./generator-row";
 //TODO spacing on input row is not correct
 //having a hard time seeing with light mode, added borders for sanity
 
+// NOTE(clearfeld): not a great solution but decent for testing - for the time being.
+import {
+	useRecoilValue,
+	// useSetRecoilState
+} from "recoil";
+import {
+	T_GeneratorRowsStateData,
+	// T_SetGeneratorRowsStateData,
+	GeneratorRowsStateData,
+	I_GeneratorRow,
+} from "@src/store/GeneratorAtom";
+
+import { GenerateJSON } from "@src/data-faking/assoc";
+
+function GeneratorLines() {
+	const getGeneratorRowsState: T_GeneratorRowsStateData = useRecoilValue(GeneratorRowsStateData);
+
+	return (
+		<div className="content__input-row-area">
+			{getGeneratorRowsState.rows.map((row: I_GeneratorRow, ridx: number) => {
+				return <GeneratorRow key={ridx} row={row} />;
+			})}
+		</div>
+	);
+}
+
 function GeneratorBox() {
+	const getGeneratorRowsState: T_GeneratorRowsStateData = useRecoilValue(GeneratorRowsStateData);
+
+	function GenerateFile(): void {
+		if (getGeneratorRowsState.rows) {
+			const data = GenerateJSON(getGeneratorRowsState);
+
+			console.log(data);
+
+			const a = document.createElement("a");
+			const blob = new Blob([data]);
+			a.href = URL.createObjectURL(blob);
+			a.download = "data"; // filename to download
+			a.click();
+			a.remove();
+		}
+	}
+
 	return (
 		<>
 			<div className="content__labels">
@@ -20,17 +63,15 @@ function GeneratorBox() {
 				<h1>Blank / Null Value</h1>
 				<h1>Blank / Null Percent</h1>
 			</div>
-			<div className="content__input-row-area">
-				<GeneratorRow />
-				<GeneratorRow />
-				<GeneratorRow />
-			</div>
+
+			<GeneratorLines />
+
 			<div className="content__button-area">
 				<div className="content__button-area-left center">
 					<button>Add Row</button>
 				</div>
 				<div className="content__button-area-right center">
-					<button>Generate</button>
+					<button onClick={GenerateFile}>Generate</button>
 					<button>Preview</button>
 				</div>
 			</div>
