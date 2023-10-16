@@ -39,11 +39,15 @@ $blue-primary: #006699;
   }
 
   &__labels {
-    display: flex;
-    justify-content: space-evenly;
+    display: grid;
+    grid-template-columns: 1fr 1fr 4rem;
+    // justify-items: center;
+    padding-left: 1.25rem;
+    // justify-content: space-evenly;
     border-bottom: 0.125rem solid var(--color-border);
     padding-top: 2em;
     padding-bottom: 0.5em;
+
     //background-color: #006699;
     h1 {
       font-size: 0.75em;
@@ -51,7 +55,6 @@ $blue-primary: #006699;
     }
   }
   &__input-row-area {
-    margin-top: 1em;
     flex-grow: 1;
     padding: 0.75em;
     overflow-y: scroll;
@@ -59,10 +62,12 @@ $blue-primary: #006699;
   }
 
   &__input-row {
-    display: flex;
-    justify-content: space-evenly;
+    display: grid;
+    grid-template-columns: 1fr 1fr 4rem;
     align-items: center;
-    margin-bottom: 1em;
+    justify-items: center;
+    margin-bottom: 1rem;
+
     //background-color: pink;
     button {
       display: flex;
@@ -71,8 +76,9 @@ $blue-primary: #006699;
       cursor: pointer;
     }
     input {
-      width: 176px;
-      height: 32px;
+      // width: 176px;
+      width: 90% !important;
+      height: 2rem;
     }
   }
   &__button-area {

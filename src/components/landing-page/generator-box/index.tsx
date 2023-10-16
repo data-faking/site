@@ -1,5 +1,7 @@
+/* eslint-disable @typescript-eslint/no-unsafe-call */
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
 import React from "react";
+import { v4 as uuidv4 } from 'uuid';
 
 // import * as faking from "data-faking";
 
@@ -28,6 +30,7 @@ import {
 } from "@src/store/GeneratorAtom";
 
 import { GenerateJSON, df_assoc, df_func } from "@src/data-faking/assoc";
+import { produce } from "immer";
 
 function GeneratorLines() {
 	const getGeneratorRowsState: T_GeneratorRowsStateData = useRecoilValue(GeneratorRowsStateData);
@@ -39,7 +42,7 @@ function GeneratorLines() {
 
 		for (let i = 0; i < ns.rows.length; ++i) {
 			// const element = array[i];
-			if(ns.rows[i].id === id) {
+			if (ns.rows[i].id === id) {
 				ns.rows.splice(i, 1);
 				break;
 			}
@@ -48,14 +51,23 @@ function GeneratorLines() {
 		setGeneratorRowsState(ns);
 	}
 
+	function UpdateRow(row: I_GeneratorRow): void {
+		const ns = produce(getGeneratorRowsState, (draft) => {
+			for (let i = 0; i < draft.rows.length; ++i) {
+				if (draft.rows[i].id === row.id) {
+					draft.rows[i] = row;
+					break;
+				}
+			}
+		});
+
+		setGeneratorRowsState(ns);
+	}
+
 	return (
 		<div className="content__input-row-area">
 			{getGeneratorRowsState.rows.map((row: I_GeneratorRow, ridx: number) => {
-				return <GeneratorRow
-				key={ridx}
-				row={row}
-				RemoveRow={RemoveRow}
-				/>;
+				return <GeneratorRow key={ridx} row={row} UpdateRow={UpdateRow} RemoveRow={RemoveRow} />;
 			})}
 		</div>
 	);
@@ -94,7 +106,7 @@ function GeneratorBox() {
 		const ns = structuredClone(getGeneratorRowsState);
 
 		ns.rows.push({
-			id: "-1",
+			id: uuidv4(),
 			field_name: "a",
 			type: df_assoc[0],
 			null_str: "",
@@ -109,8 +121,8 @@ function GeneratorBox() {
 			<div className="content__labels">
 				<h1>Field Name</h1>
 				<h1>Type</h1>
-				<h1>Blank / Null Value</h1>
-				<h1>Blank / Null Percent</h1>
+				{/* <h1>Blank / Null Value</h1>
+				<h1>Blank / Null Percent</h1> */}
 			</div>
 
 			<GeneratorLines />

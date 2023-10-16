@@ -1,0 +1,16 @@
+.commons__input__ {
+  &wrapper {
+    outline: none;
+    border-radius: 0.25rem;
+    border: 0.0625rem solid var(--color-border);
+    background-color: var(--color-bg-compliment);
+    color: var(--color-text);
+    padding: 0.125rem 0.5rem;
+    width: 60% !important;
+
+    &:hover,
+    &:focus {
+      border: 0.0625rem solid #006699;
+    }
+  }
+}

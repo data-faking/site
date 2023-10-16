@@ -1,4 +1,7 @@
+/* eslint-disable @typescript-eslint/no-unsafe-call */
+/* eslint-disable @typescript-eslint/no-unsafe-assignment */
 import { atom } from "recoil";
+import { v4 as uuidv4 } from 'uuid';
 
 import {
     df_assoc,
@@ -26,7 +29,7 @@ export const GeneratorRowsStateData = atom<T_GeneratorRowsStateData>({
   default: {
     rows: [
       {
-        id: "1",
+        id: uuidv4(),
         field_name: "a",
         type: df_assoc[0],
         null_str: "",
@@ -34,7 +37,7 @@ export const GeneratorRowsStateData = atom<T_GeneratorRowsStateData>({
       },
 
       {
-        id: "2",
+        id: uuidv4(),
         field_name: "b",
         type: df_assoc[0],
         null_str: "",
@@ -42,7 +45,7 @@ export const GeneratorRowsStateData = atom<T_GeneratorRowsStateData>({
       },
 
       {
-        id: "3",
+        id: uuidv4(),
         field_name: "c",
         type: df_assoc[1],
         null_str: "",
