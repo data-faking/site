@@ -12,10 +12,11 @@ $blue-primary: #006699;
   display: grid;
   gap: 1.5em;
   padding: 1.5em;
-  grid-template-columns: 1fr 1fr;
+  // grid-template-columns: 1fr 1fr;
 
   &__left {
     height: calc(100vh - 4rem - var(--navbar-size));
+    border-radius: 0.25rem;
 
     //wtf if I dont add this I cant get y-overflow scrolling in
     overflow-y: auto;
@@ -32,6 +33,7 @@ $blue-primary: #006699;
     display: flex;
     padding: 0.75em;
     overflow: auto;
+    border-radius: 0.25rem;
 
     &-wrapper {
       padding: 0.75em;

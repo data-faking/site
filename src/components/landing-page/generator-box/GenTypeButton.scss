@@ -1,0 +1,16 @@
+.gen-type-btn__ {
+  &wrapper {
+    background-color: var(--color-bg-compliment);
+    width: 90%;
+    border-radius: 0.25rem;
+    padding: 0.5rem 0.5rem;
+    border: 0.0625rem solid var(--color-border);
+    cursor: pointer;
+
+    // transition: background-color var(--transition-speed) ease;
+
+    &:hover {
+        background-color: var(--color-bg-hover);
+    }
+  }
+}

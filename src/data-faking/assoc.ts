@@ -53,12 +53,12 @@ export const df_assoc = [
   },
 ];
 
-export function GenerateJSON(grs: T_GeneratorRowsStateData): string {
+export function GenerateJSON(grs: T_GeneratorRowsStateData, n_rows: number): string {
   const rows = grs.rows;
   console.log(rows);
   let content = "[\n";
 
-  for (let r = 0; r < 10; ++r) {
+  for (let r = 0; r < n_rows; ++r) {
     let jobj = "{";
     for (let i = 0; i < rows.length; ++i) {
       console.log(rows[i]);

@@ -7,23 +7,19 @@ import React from "react";
 import { ReactComponent as DeleteIconSVG } from "@src/assets/delete-icon.svg";
 import { I_GeneratorRow } from "@src/store/GeneratorAtom";
 
-import {
-	// useRecoilValue,
-	useSetRecoilState,
-} from "recoil";
-import {
-	// T_ModalStateData,
-	T_SetModalStateData,
-	ModalStateData,
-	E_MODALS_NAME,
-} from "@src/store/ModalStateAtom";
-import {
-	// T_SelectedGeneratorRowStateData,
-	T_SetSelectedGeneratorRowStateData,
-	SelectedGeneratorRowStateData,
-} from "@src/store/SelectedGeneratorAtom";
+// import {
+// 	// useRecoilValue,
+// 	useSetRecoilState,
+// } from "recoil";
+// import {
+// 	// T_SelectedGeneratorRowStateData,
+// 	T_SetSelectedGeneratorRowStateData,
+// 	SelectedGeneratorRowStateData,
+// } from "@src/store/SelectedGeneratorAtom";
+
 import Input from "@src/components/commons/input";
 import { produce } from "immer";
+import GenTypeButton from "./GenTypeButton";
 
 interface I_GeneratorRowProps {
 	row: I_GeneratorRow;
@@ -32,22 +28,6 @@ interface I_GeneratorRowProps {
 }
 
 function GeneratorRow(props: I_GeneratorRowProps) {
-	const setModalState: T_SetModalStateData = useSetRecoilState(ModalStateData);
-	const setSelectedGeneratorRowState: T_SetSelectedGeneratorRowStateData = useSetRecoilState(
-		SelectedGeneratorRowStateData,
-	);
-
-	function OpenSelectorModal(): void {
-		setSelectedGeneratorRowState({
-			id: props.row.id,
-			row: props.row,
-		});
-		setModalState({
-			showModal: true,
-			modalString: E_MODALS_NAME.SELECT_GENERATOR_FUNCTION,
-		});
-	}
-
 	function RemoveRow(): void {
 		props.RemoveRow(props.row.id);
 	}
@@ -67,7 +47,8 @@ function GeneratorRow(props: I_GeneratorRowProps) {
 			</button> */}
 
 			<Input value={props.row.field_name} SetValue={UpdateFieldName} />
-			<input value={props.row.type.title} onClick={OpenSelectorModal} />
+			<GenTypeButton row={props.row} />
+
 			{/* <Input value={props.row.null_str ?? ""} />
 			<div
 				style={{
