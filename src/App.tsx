@@ -4,7 +4,7 @@ import "./App.css";
 
 import {
 	createRoutesFromElements,
-	createBrowserRouter,
+	createHashRouter,
 	RouterProvider,
 	Route,
 	Outlet
@@ -26,7 +26,8 @@ function App() {
 	//const getCountState: T_CountStateData = useRecoilValue(CountStateData);
 	//const setCountState: T_SetCountStateData = useSetRecoilState(CountStateData);
 
-	const router = createBrowserRouter(
+	// const router = createBrowserRouter(
+	const router = createHashRouter(
 		createRoutesFromElements(
 			<Route
 				path="/"
