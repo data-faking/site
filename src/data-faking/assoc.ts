@@ -1,3 +1,5 @@
+import * as faking from "data-faking";
+
 import {
   I_GeneratorRow,
   T_GeneratorRowsStateData,
@@ -9,17 +11,31 @@ export enum E_DF {
   FEMALE_PREFIX_STANDARD,
 }
 
+export interface I_DFASSOC {
+  title: string;
+  ex_data: string;
+  // eslint-disable-next-line @typescript-eslint/ban-types
+  func?: Function; // () => string | number | boolean | null;
+}
+
+export const df_func = {
+    "Male prefix standard": faking.male_prefix_standard,
+    "Femlae prefix standard": faking.female_prefix_standard,
+};
+
 export const df_assoc = [
   // defaults - name
   {
     title: "Male prefix standard",
     // description?
-    func: "male_prefix_standard",
+    ex_data: "Mr.",
+    // func: faking.male_prefix_standard,
   },
 
   {
     title: "Femlae prefix standard",
-    func: "female_prefix_standard",
+    ex_data: "Mrs.",
+    // func: faking.female_prefix_standard,
   },
 ];
 
@@ -44,15 +60,15 @@ export function GenerateJSON(grs: T_GeneratorRowsStateData): string {
   return content;
 }
 
-import * as faking from "data-faking";
-
 function CreateJSONObject(row: I_GeneratorRow): string {
   let content = "";
 
   content += '"' + row.field_name + '"';
   content += ": ";
 
-  content += '"' + faking.female_prefix() + '"';
+  if (row.type.func) {
+    content += '"' + row.type.func() + '"';
+  }
 
   content += ", ";
   return content;

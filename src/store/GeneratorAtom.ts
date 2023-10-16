@@ -1,9 +1,15 @@
 import { atom } from "recoil";
 
+import {
+    df_assoc,
+    I_DFASSOC
+} from "@src/data-faking/assoc";
+
 export interface I_GeneratorRow {
+  id: string;
   field_name: string;
-  value: number;
-  null_str: string;
+  type: I_DFASSOC;
+  null_str: string | null;
   null_percent: number;
 }
 
@@ -19,26 +25,29 @@ export const GeneratorRowsStateData = atom<T_GeneratorRowsStateData>({
   key: "GeneratorRowsState",
   default: {
     rows: [
-        {
-            field_name: "a",
-            value: 0,
-            null_str: "",
-            null_percent: 0,
-        },
+      {
+        id: "1",
+        field_name: "a",
+        type: df_assoc[0],
+        null_str: "",
+        null_percent: 0,
+      },
 
-        {
-            field_name: "b",
-            value: 1,
-            null_str: "",
-            null_percent: 0,
-        },
+      {
+        id: "2",
+        field_name: "b",
+        type: df_assoc[0],
+        null_str: "",
+        null_percent: 0,
+      },
 
-        {
-            field_name: "c",
-            value: 2,
-            null_str: "",
-            null_percent: 0,
-        },
+      {
+        id: "3",
+        field_name: "c",
+        type: df_assoc[1],
+        null_str: "",
+        null_percent: 0,
+      },
     ],
   },
 });

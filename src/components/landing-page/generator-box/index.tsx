@@ -1,4 +1,7 @@
+/* eslint-disable @typescript-eslint/no-unsafe-assignment */
 import React from "react";
+
+// import * as faking from "data-faking";
 
 import GeneratorRow from "./generator-row";
 
@@ -23,7 +26,7 @@ import {
 	I_GeneratorRow,
 } from "@src/store/GeneratorAtom";
 
-import { GenerateJSON } from "@src/data-faking/assoc";
+import { GenerateJSON, df_func } from "@src/data-faking/assoc";
 
 function GeneratorLines() {
 	const getGeneratorRowsState: T_GeneratorRowsStateData = useRecoilValue(GeneratorRowsStateData);
@@ -42,12 +45,21 @@ function GeneratorBox() {
 
 	function GenerateFile(): void {
 		if (getGeneratorRowsState.rows) {
-			const data = GenerateJSON(getGeneratorRowsState);
+			const ns = structuredClone(getGeneratorRowsState);
+			for (let i = 0; i < ns.rows.length; ++i) {
+				const str = ns.rows[i].type.title;
+				// @ts-ignore
+				ns.rows[i].type.func = df_func[str];
+			}
 
-			console.log(data);
+			// const data = GenerateJSON(getGeneratorRowsState);
+			const data = GenerateJSON(ns);
 
+			// console.log(data);
 			const a = document.createElement("a");
-			const blob = new Blob([data]);
+			const blob = new Blob([data], {
+				type: "application/json", // file ending
+			});
 			a.href = URL.createObjectURL(blob);
 			a.download = "data"; // filename to download
 			a.click();
