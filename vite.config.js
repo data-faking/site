@@ -27,7 +27,7 @@ export default defineConfig(({ command, mode }) => {
 
 			build: {
 				// Relative to the root
-				outDir: "../dist",
+				outDir: "../build",
 				emptyOutDir: true,
 				// rollupOptions: {
 				// },
@@ -85,9 +85,11 @@ export default defineConfig(({ command, mode }) => {
 			root: "src",
 			mode: "production",
 
+			base: "/site", // require for gh-pages path
+
 			build: {
 				// Relative to the root
-				outDir: "../dist",
+				outDir: "../build",
 				emptyOutDir: true,
 				// https://rollupjs.org/configuration-options/
 				rollupOptions: {

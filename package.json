@@ -1,5 +1,6 @@
 {
   "name": "data-faking",
+  "homepage": "https://data-faking.github.io/site",
   "version": "1.0.0",
   "type": "module",
   "scripts": {
