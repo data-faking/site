@@ -1,8 +1,29 @@
 /* eslint-disable @typescript-eslint/no-unsafe-call */
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
-import React from "react";
-import { DragDropContext, Droppable, DropResult } from "react-beautiful-dnd";
+/* eslint-disable @typescript-eslint/no-unsafe-member-access */
+/* eslint-disable @typescript-eslint/no-unsafe-argument */
+import React, { useEffect, useState } from "react";
+import { DragDropContext, Droppable, DropResult, DroppableProps } from "react-beautiful-dnd";
 // import * as faking from "data-faking";
+
+export const StrictModeDroppable = ({ children, ...props }: DroppableProps) => {
+  const [enabled, setEnabled] = useState(false);
+
+  useEffect(() => {
+    const animation = requestAnimationFrame(() => setEnabled(true));
+
+    return () => {
+      cancelAnimationFrame(animation);
+      setEnabled(false);
+    };
+  }, []);
+
+  if (!enabled) {
+    return null;
+  }
+
+  return <Droppable {...props}>{children}</Droppable>;
+};
 
 import GeneratorRow from "./generator-row";
 
@@ -86,7 +107,7 @@ function GeneratorLines() {
 	return (
 
 		<DragDropContext onDragEnd={result => OnDragEnd(result)}>
-			<Droppable droppableId="ledrop">
+			<StrictModeDroppable droppableId="ledrop">
 				{(provided) => {
 					return (
 						<div
@@ -103,7 +124,7 @@ function GeneratorLines() {
 						</div>
 					)
 				}}
-			</Droppable>
+			</StrictModeDroppable>
 		</DragDropContext>
 
 
