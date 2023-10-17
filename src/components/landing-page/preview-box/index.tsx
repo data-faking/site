@@ -1,6 +1,6 @@
 import React from "react";
 //import "./LandingPage.scss";
-import ReactJson, { ThemeKeys, ThemeObject } from 'react-json-view';
+import ReactJson, { ThemeKeys } from 'react-json-view';
 
 
 import {
@@ -164,7 +164,7 @@ function PreviewBox() {
     return (
         <div className="content__right">
             <div className="content__right-wrapper">
-                <ReactJson src={DummyData} theme={getUserPreferencesState.jsonTheme as ThemeKeys | ThemeObject | undefined} style={{ backgroundColor: "transparent" }} />
+                <ReactJson src={DummyData} theme={getUserPreferencesState.jsonTheme as ThemeKeys} style={{ backgroundColor: "transparent" }} />
             </div>
         </div>
     );
