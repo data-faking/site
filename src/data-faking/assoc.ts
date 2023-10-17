@@ -61,7 +61,7 @@ export function GenerateJSON(grs: T_GeneratorRowsStateData, n_rows: number): str
   for (let r = 0; r < n_rows; ++r) {
     let jobj = "{";
     for (let i = 0; i < rows.length; ++i) {
-      console.log(rows[i]);
+      // console.log(rows[i]);
 
       jobj += CreateJSONObject(rows[i]);
     }
@@ -71,6 +71,9 @@ export function GenerateJSON(grs: T_GeneratorRowsStateData, n_rows: number): str
     content += jobj;
   }
   content += "]";
+
+  console.log(content);
+
   return content;
 }
 

@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-unsafe-call */
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
-import React from "react";
+import React, { useEffect } from "react";
 import { v4 as uuidv4 } from "uuid";
 
 // import * as faking from "data-faking";
@@ -34,6 +34,9 @@ import {
 	GeneratorSettingsStateData,
 	// I_GeneratorRow,
 } from "@src/store/GeneratorSettingsAtom";
+import {
+    PreviewGeneratorDataStateData, T_SetPreviewGeneratorDataStateData
+} from "@src/store/PreviewGeneratorDataAtom";
 
 import { GenerateJSON, df_assoc, df_func } from "@src/data-faking/assoc";
 // import { produce } from "immer";
@@ -45,12 +48,19 @@ function GeneratorSettings() {
 	const setGeneratorRowsState: T_SetGeneratorRowsStateData =
 		useSetRecoilState(GeneratorRowsStateData);
 
+	const setPreviewGeneratorDataState: T_SetPreviewGeneratorDataStateData =
+		useSetRecoilState(PreviewGeneratorDataStateData);
+
 	const getGeneratorSettingsState: T_GeneratorSettingsData = useRecoilValue(
 		GeneratorSettingsStateData,
 	);
 	const setGeneratorSettingsState: T_SetGeneratorSettingsStateData = useSetRecoilState(
 		GeneratorSettingsStateData,
 	);
+
+	useEffect(() => {
+		GenerateAndSetPreviewData();
+	}, []);
 
 	function GenerateFile(): void {
 		if (getGeneratorRowsState.rows) {
@@ -71,6 +81,8 @@ function GeneratorSettings() {
 
 			const data = GenerateJSON(ns, n_rows);
 
+			return;
+
 			// console.log(data);
 			const a = document.createElement("a");
 			const blob = new Blob([data], {
@@ -80,6 +92,43 @@ function GeneratorSettings() {
 			a.download = "data"; // filename to download
 			a.click();
 			a.remove();
+		}
+	}
+
+	function GenerateAndSetPreviewData(): void {
+		if (getGeneratorRowsState.rows) {
+			const ns = structuredClone(getGeneratorRowsState);
+			for (let i = 0; i < ns.rows.length; ++i) {
+				const str = ns.rows[i].type.title;
+				// @ts-ignore
+				ns.rows[i].type.func = df_func[str];
+			}
+
+			// const data = GenerateJSON(getGeneratorRowsState);
+            let n_rows = getGeneratorSettingsState.rows;
+            if(n_rows > 1000) {
+				n_rows = 1000;
+			} else if (n_rows < 1) {
+				n_rows = 1;
+			}
+
+			let data = GenerateJSON(ns, 10);
+
+			try {
+				data = data.substring(0, data.length - 3);
+				data += "\n]";
+				// console.log("data");
+				// console.log(data);
+				const jd = JSON.parse(data);
+				// console.log("json");
+				// console.log(jd);
+				setPreviewGeneratorDataState(jd);
+			} catch (error) {
+				// TODO(clearfeld): show an error modal or something
+				console.error(error);
+			}
+
+			return;
 		}
 	}
 
@@ -114,7 +163,7 @@ function GeneratorSettings() {
 
 				<div className="content__button-area-right center">
 					<button onClick={GenerateFile}>Generate</button>
-					{/* <button>Preview</button> */}
+					<button onClick={GenerateAndSetPreviewData}>Preview</button>
 				</div>
 			</div>
 

@@ -26,7 +26,7 @@ $blue-primary: #006699;
   }
 
   &__right {
-    height: calc(100vh - 6rem - var(--navbar-size));
+    height: calc(100vh - 5.5rem - var(--navbar-size));
 
     background-color: var(--color-bg);
     //border: 0.5px solid black;
