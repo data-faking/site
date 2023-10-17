@@ -3,7 +3,7 @@
 /* eslint-disable @typescript-eslint/no-unsafe-call */
 /* eslint-disable @typescript-eslint/no-unsafe-member-access */
 /* eslint-disable @typescript-eslint/no-redundant-type-constituents */
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 
 import "./navbar.scss";
 
@@ -11,18 +11,29 @@ import Cookies from "js-cookie";
 
 import { ReactComponent as DarkModeIconSVG } from "@src/assets/dark-mode.svg";
 
+import {
+	//useRecoilValue,
+	useSetRecoilState,
+	// useSetRecoilState
+} from "recoil";
+import {
+	//T_UserPreferencesData,
+	T_SetUserPreferencesStateData,
+	UserPreferencesStateData
+} from "@src/store/UserPreferencesAtom";
+
 interface I_Cookie_UserPreferences {
 	theme: "Dark" | "Light" | string;
 }
 
 function Navbar() {
 	const user_preferences_cookie = "df__user_preferences";
-
-	const [theme, setTheme] = useState<"DARK" | "LIGHT">("LIGHT");
+	//const getUserPreferencesState: T_UserPreferencesData = useRecoilValue(UserPreferencesStateData);
+	const setUserPreferencesState: T_SetUserPreferencesStateData =
+		useSetRecoilState(UserPreferencesStateData);
 
 	useEffect(() => {
 		EnablePreferredTheme();
-        console.log(theme);
 	}, []);
 
 	function EnablePreferredTheme(): void {
@@ -34,10 +45,10 @@ function Navbar() {
 			const htmlroot = document.getElementsByTagName("html")[0];
 
 			if (upc.theme === "Dark") {
-				setTheme("DARK");
+				setUserPreferencesState({ theme: "DARK", jsonTheme: "twilight" });
 				htmlroot.setAttribute("data-theme", "Dark");
 			} else {
-				setTheme("LIGHT");
+				setUserPreferencesState({ theme: "LIGHT", jsonTheme: "djv-default" });
 				htmlroot.setAttribute("data-theme", "Light");
 			}
 		}
@@ -64,17 +75,17 @@ function Navbar() {
 		const dt = htmlroot.getAttribute("data-theme");
 		let theme = "";
 		if (dt === "Dark") {
-			setTheme("LIGHT");
+			setUserPreferencesState({ theme: "LIGHT", jsonTheme: "djv-default" });
 			htmlroot.setAttribute("data-theme", "Light");
 			theme = "Light";
 		} else {
-			setTheme("DARK");
+			setUserPreferencesState({ theme: "DARK", jsonTheme: "twilight" });
 			htmlroot.setAttribute("data-theme", "Dark");
 			theme = "Dark";
 		}
 
 		const _ = window.getComputedStyle(css).opacity;
-        console.log(_);
+		console.log(_);
 		document.head.removeChild(css);
 
 		const up = Cookies.get(user_preferences_cookie);

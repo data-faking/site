@@ -12,7 +12,7 @@ $blue-primary: #006699;
   display: grid;
   gap: 1.5em;
   padding: 1.5em;
-  // grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr 1fr;
 
   &__left {
     height: calc(100vh - 4rem - var(--navbar-size));

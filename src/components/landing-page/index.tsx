@@ -2,6 +2,7 @@ import React from "react";
 import "./LandingPage.scss";
 
 import GeneratorBox from "./generator-box";
+import PreviewBox from "./preview-box";
 //TODO resize some heights
 //TODO finish form and display
 //TODO refactor everything into components
@@ -95,20 +96,16 @@ import GeneratorBox from "./generator-box";
 // ];
 
 function LandingPage() {
-	return (
-		<>
-			<div className="content">
-				<div className="content__left">
-					<GeneratorBox />
-				</div>
+    return (
+        <>
+            <div className="content">
+                <div className="content__left">
+                    <GeneratorBox />
+                </div>
 
-				{/* <div className="content__right">
-					<div className="content__right-wrapper">
-						<pre>{JSON.stringify(DummyData, null, 3)}</pre>
-					</div>
-				</div> */}
-			</div>
-		</>
-	);
+                <PreviewBox />
+            </div>
+        </>
+    );
 }
 export default LandingPage;
