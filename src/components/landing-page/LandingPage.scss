@@ -64,12 +64,10 @@ $blue-primary: #006699;
   }
 
   &__input-row {
-    display: grid;
-    grid-template-columns: 1fr 1fr 4rem;
+    display: flex;
+    justify-content: space-between;
     align-items: center;
-    justify-items: center;
     margin-bottom: 1rem;
-
     //background-color: pink;
     button {
       display: flex;
@@ -77,12 +75,18 @@ $blue-primary: #006699;
       border: none;
       cursor: pointer;
     }
+
     input {
       // width: 176px;
       width: 90% !important;
       height: 2rem;
     }
+
+    &-drag-icon {
+      cursor: grab !important;
+    }
   }
+
   &__button-area {
     display: flex;
     flex-direction: row;

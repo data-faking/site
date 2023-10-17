@@ -1,8 +1,29 @@
 /* eslint-disable @typescript-eslint/no-unsafe-call */
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
-import React from "react";
-
+/* eslint-disable @typescript-eslint/no-unsafe-member-access */
+/* eslint-disable @typescript-eslint/no-unsafe-argument */
+import React, { useEffect, useState } from "react";
+import { DragDropContext, Droppable, DropResult, DroppableProps } from "react-beautiful-dnd";
 // import * as faking from "data-faking";
+
+export const StrictModeDroppable = ({ children, ...props }: DroppableProps) => {
+  const [enabled, setEnabled] = useState(false);
+
+  useEffect(() => {
+    const animation = requestAnimationFrame(() => setEnabled(true));
+
+    return () => {
+      cancelAnimationFrame(animation);
+      setEnabled(false);
+    };
+  }, []);
+
+  if (!enabled) {
+    return null;
+  }
+
+  return <Droppable {...props}>{children}</Droppable>;
+};
 
 import GeneratorRow from "./generator-row";
 
@@ -63,12 +84,50 @@ function GeneratorLines() {
 		setGeneratorRowsState(ns);
 	}
 
+
+	function OnDragEnd(result: DropResult) {
+		const { destination, source } = result;
+
+		//dropped outside
+		if (!destination) return;
+
+		//dropped same place
+		if (destination.droppableId === source.droppableId && destination.index === source.index) return;
+
+		const ns = structuredClone(getGeneratorRowsState);
+
+		//removed the grabbed row
+		const selectedRow = ns.rows.splice(source.index, 1);
+
+		//splice it into its destination
+		ns.rows.splice(destination.index, 0, selectedRow[0]);
+		setGeneratorRowsState(ns);
+	}
+
 	return (
-		<div className="content__input-row-area">
-			{getGeneratorRowsState.rows.map((row: I_GeneratorRow, ridx: number) => {
-				return <GeneratorRow key={ridx} row={row} UpdateRow={UpdateRow} RemoveRow={RemoveRow} />;
-			})}
-		</div>
+
+		<DragDropContext onDragEnd={result => OnDragEnd(result)}>
+			<StrictModeDroppable droppableId="ledrop">
+				{(provided) => {
+					return (
+						<div
+							{...provided.droppableProps}
+							ref={provided.innerRef}
+							className="content__input-row-area"
+						>
+							{getGeneratorRowsState.rows.map((row: I_GeneratorRow, ridx: number) => {
+								return (
+									<GeneratorRow key={ridx} row={row} index={ridx} UpdateRow={UpdateRow} RemoveRow={RemoveRow} />
+								)
+							})}
+							{provided.placeholder}
+						</div>
+					)
+				}}
+			</StrictModeDroppable>
+		</DragDropContext>
+
+
 	);
 }
 
