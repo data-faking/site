@@ -17,11 +17,8 @@ import {
 import { PreviewGeneratorDataStateData } from "@src/store/PreviewGeneratorDataAtom";
 
 //TODO resize some heights
-//TODO finish form and display
-//TODO refactor everything into components
 //TODO figure out why theres scroll bar (hint: its probably some 100vh error)
 //TODO incorporate different button states and variants from figma
-//TODO reactbeautifuldnd for drag and drop features
 //TODO spacing on input row is not correct
 //having a hard time seeing with light mode, added borders for sanity
 

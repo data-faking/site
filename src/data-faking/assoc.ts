@@ -18,14 +18,53 @@ export interface I_DFASSOC {
   func?: Function; // () => string | number | boolean | null;
 }
 
+export enum E_DF_NAMES {
+  // defaults - uuids
+  UUID_V1 = "UUID V1",
+  UUID_V3 = "UUID V3",
+  UUID_V4 = "UUID V4",
+  UUID_V5 = "UUID V5",
+}
+
 export const df_func = {
+    // defaults - uuids
+    "UUID V1": faking.uuid_v1,
+    "UUID V3": faking.uuid_v3,
+    "UUID V4": faking.uuid_v4,
+    "UUID V5": faking.uuid_v5,
+
+    // defaults - names
     "Male prefix standard": faking.male_prefix_standard,
     "Female prefix standard": faking.female_prefix_standard,
     "Male prefix": faking.male_prefix,
     "Female prefix": faking.female_prefix,
+
+    "Male First Name": faking.male_first_name,
+    "Last Name": faking.last_name,
 };
 
 export const df_assoc = [
+  // defaults - uuids
+  {
+    title: "UUID V1",
+    ex_data: "",
+  },
+
+  {
+    title: "UUID V3",
+    ex_data: "",
+  },
+
+  {
+    title: "UUID V4",
+    ex_data: "",
+  },
+
+  {
+    title: "UUID V5",
+    ex_data: "",
+  },
+
   // defaults - name
   {
     title: "Male prefix standard",
@@ -49,6 +88,18 @@ export const df_assoc = [
   {
     title: "Female prefix",
     ex_data: "Mrs.",
+    // func: faking.female_prefix_standard,
+  },
+
+  {
+    title: "Male First Name",
+    ex_data: "John, James, ...",
+    // func: faking.female_prefix_standard,
+  },
+
+  {
+    title: "Last Name",
+    ex_data: "Smith, Doe, ...",
     // func: faking.female_prefix_standard,
   },
 ];
