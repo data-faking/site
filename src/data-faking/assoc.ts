@@ -123,7 +123,7 @@ export function GenerateJSON(grs: T_GeneratorRowsStateData, n_rows: number): str
   }
   content += "]";
 
-  console.log(content);
+  // console.log(content);
 
   return content;
 }

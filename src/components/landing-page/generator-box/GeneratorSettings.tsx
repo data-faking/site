@@ -78,8 +78,6 @@ function GeneratorSettings() {
 
 			const data = GenerateJSON(ns, n_rows);
 
-			return;
-
 			// console.log(data);
 			const a = document.createElement("a");
 			const blob = new Blob([data], {
