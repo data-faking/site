@@ -27,20 +27,20 @@ export enum E_DF_NAMES {
 }
 
 export const df_func = {
-    // defaults - uuids
-    "UUID V1": faking.uuid_v1,
-    "UUID V3": faking.uuid_v3,
-    "UUID V4": faking.uuid_v4,
-    "UUID V5": faking.uuid_v5,
+  // defaults - uuids
+  "UUID V1": faking.uuid_v1,
+  "UUID V3": faking.uuid_v3,
+  "UUID V4": faking.uuid_v4,
+  "UUID V5": faking.uuid_v5,
 
-    // defaults - names
-    "Male prefix standard": faking.male_prefix_standard,
-    "Female prefix standard": faking.female_prefix_standard,
-    "Male prefix": faking.male_prefix,
-    "Female prefix": faking.female_prefix,
+  // defaults - names
+  "Male prefix standard": faking.male_prefix_standard,
+  "Female prefix standard": faking.female_prefix_standard,
+  "Male prefix": faking.male_prefix,
+  "Female prefix": faking.female_prefix,
 
-    "Male First Name": faking.male_first_name,
-    "Last Name": faking.last_name,
+  "Male First Name": faking.male_first_name,
+  "Last Name": faking.last_name,
 };
 
 export const df_assoc = [
@@ -104,12 +104,15 @@ export const df_assoc = [
   },
 ];
 
-export function GenerateJSON(grs: T_GeneratorRowsStateData, n_rows: number): string {
+export function GenerateJSON(
+  grs: T_GeneratorRowsStateData,
+  n_rows: number
+): string {
   const rows = grs.rows;
   console.log(rows);
   let content = "[\n";
 
-  for (let r = 0; r < n_rows; ++r) {
+  for (let r = 0; r < n_rows - 1; ++r) {
     let jobj = "{";
     for (let i = 0; i < rows.length; ++i) {
       // console.log(rows[i]);
@@ -121,6 +124,18 @@ export function GenerateJSON(grs: T_GeneratorRowsStateData, n_rows: number): str
     jobj += "},\n";
     content += jobj;
   }
+
+  let jobj = "{";
+  for (let i = 0; i < rows.length; ++i) {
+    // console.log(rows[i]);
+
+    jobj += CreateJSONObject(rows[i]);
+  }
+
+  jobj = jobj.substr(0, jobj.length - 2);
+  jobj += "}\n";
+  content += jobj;
+
   content += "]";
 
   // console.log(content);

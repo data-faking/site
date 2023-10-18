@@ -107,11 +107,11 @@ function GeneratorSettings() {
 				n_rows = 1;
 			}
 
-			let data = GenerateJSON(ns, 10);
+			const data = GenerateJSON(ns, 10);
 
 			try {
-				data = data.substring(0, data.length - 3);
-				data += "\n]";
+				// data = data.substring(0, data.length - 3);
+				// data += "\n]";
 				// console.log("data");
 				// console.log(data);
 				const jd = JSON.parse(data);
