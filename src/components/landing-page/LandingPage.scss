@@ -12,7 +12,7 @@ $blue-primary: #006699;
   display: grid;
   gap: 1.5em;
   padding: 1.5em;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1.5fr 1fr;
 
   &__left {
     height: calc(100vh - 4rem - var(--navbar-size));
@@ -38,18 +38,21 @@ $blue-primary: #006699;
 
   &__labels {
     display: grid;
-    grid-template-columns: 1fr 1fr 4rem;
+    // grid-template-columns: 2fr 2fr 1px 1fr 1fr 4rem;
+    grid-template-columns: 1.5rem 4fr 4fr 0 1.5fr 0.5fr 3rem;
+
     // justify-items: center;
-    padding-left: 1.25rem;
+    // padding-left: 1.25rem;
     // justify-content: space-evenly;
     border-bottom: 0.125rem solid var(--color-border);
-    padding-top: 0.5rem;
-    padding-bottom: 0.5rem;
+    // padding-top: 0.5rem;
+    // padding-bottom: 0.5rem;
+    padding: 0.75rem;
 
     //background-color: #006699;
     h1 {
       font-size: 0.75rem;
-      padding-left: 1.25rem;
+      // padding-left: 1.25rem;
       //border: 1px solid black;
     }
   }
@@ -61,14 +64,15 @@ $blue-primary: #006699;
   }
 
   &__input-row {
-    display: flex;
-    justify-content: space-between;
+    display: grid;
     align-items: center;
     margin-bottom: 1rem;
+    grid-template-columns: 1.5rem 4fr 4fr 0 1.5fr 0.5fr 3rem;
     //background-color: pink;
     button {
       display: flex;
       background-color: transparent;
+      justify-content: center;
       border: none;
       cursor: pointer;
     }

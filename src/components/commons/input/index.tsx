@@ -6,8 +6,9 @@ import React from "react";
 import "./Input.scss";
 
 interface I_InputProps {
-	value: string | number;
+	value: string | number | null;
 	SetValue?: (val: any) => void;
+	placeholder?: string;
 }
 
 function Input(props: I_InputProps) {
@@ -19,7 +20,14 @@ function Input(props: I_InputProps) {
 		}
 	}
 
-	return <input className="commons__input__wrapper" value={props.value} onChange={OnChange} />;
+	return (
+		<input
+			className="commons__input__wrapper"
+			value={props.value ?? ""}
+			onChange={OnChange}
+			placeholder={props.placeholder}
+		/>
+	);
 }
 
 export default Input;

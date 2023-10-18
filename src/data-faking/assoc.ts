@@ -26,7 +26,7 @@ export interface I_DFASSOC {
 export enum E_FAKING_RETURN_TYPES {
   STRING,
   NUMBER,
-  BOOLEAN
+  BOOLEAN,
 }
 
 // TODO(clearfeld): this is pretty nasty - think of something better later
@@ -55,37 +55,100 @@ export enum E_DF_NAMES {
 
 export const df_func = {
   // defaults - uuids
-  [E_DF_NAMES.UUID_V1]: { "fn": faking.uuid_v1, "return_type": E_FAKING_RETURN_TYPES.STRING },
-  [E_DF_NAMES.UUID_V3]: { "fn": faking.uuid_v3, "return_type": E_FAKING_RETURN_TYPES.STRING },
-  [E_DF_NAMES.UUID_V4]: { "fn": faking.uuid_v4, "return_type": E_FAKING_RETURN_TYPES.STRING },
-  [E_DF_NAMES.UUID_V5]: { "fn": faking.uuid_v5, "return_type": E_FAKING_RETURN_TYPES.STRING },
+  [E_DF_NAMES.UUID_V1]: {
+    fn: faking.uuid_v1,
+    return_type: E_FAKING_RETURN_TYPES.STRING,
+  },
+  [E_DF_NAMES.UUID_V3]: {
+    fn: faking.uuid_v3,
+    return_type: E_FAKING_RETURN_TYPES.STRING,
+  },
+  [E_DF_NAMES.UUID_V4]: {
+    fn: faking.uuid_v4,
+    return_type: E_FAKING_RETURN_TYPES.STRING,
+  },
+  [E_DF_NAMES.UUID_V5]: {
+    fn: faking.uuid_v5,
+    return_type: E_FAKING_RETURN_TYPES.STRING,
+  },
 
   // defaults - types
-  [E_DF_NAMES.BOOL]: { "fn": faking.bool, "return_type": E_FAKING_RETURN_TYPES.BOOLEAN },
+  [E_DF_NAMES.BOOL]: {
+    fn: faking.bool,
+    return_type: E_FAKING_RETURN_TYPES.BOOLEAN,
+  },
 
-  [E_DF_NAMES.I8]: { "fn": faking.i8, "return_type": E_FAKING_RETURN_TYPES.NUMBER },
-  [E_DF_NAMES.I16]: { "fn": faking.i16, "return_type": E_FAKING_RETURN_TYPES.NUMBER },
-  [E_DF_NAMES.I32]: { "fn": faking.i32, "return_type": E_FAKING_RETURN_TYPES.NUMBER },
-  [E_DF_NAMES.I64]: { "fn": faking.i64, "return_type": E_FAKING_RETURN_TYPES.NUMBER },
-  [E_DF_NAMES.ISIZE]: { "fn": faking.isize, "return_type": E_FAKING_RETURN_TYPES.NUMBER },
+  [E_DF_NAMES.I8]: { fn: faking.i8, return_type: E_FAKING_RETURN_TYPES.NUMBER },
+  [E_DF_NAMES.I16]: {
+    fn: faking.i16,
+    return_type: E_FAKING_RETURN_TYPES.NUMBER,
+  },
+  [E_DF_NAMES.I32]: {
+    fn: faking.i32,
+    return_type: E_FAKING_RETURN_TYPES.NUMBER,
+  },
+  [E_DF_NAMES.I64]: {
+    fn: faking.i64,
+    return_type: E_FAKING_RETURN_TYPES.NUMBER,
+  },
+  [E_DF_NAMES.ISIZE]: {
+    fn: faking.isize,
+    return_type: E_FAKING_RETURN_TYPES.NUMBER,
+  },
 
-  [E_DF_NAMES.U8]: { "fn": faking.u8, "return_type": E_FAKING_RETURN_TYPES.NUMBER },
-  [E_DF_NAMES.U16]: { "fn": faking.u16, "return_type": E_FAKING_RETURN_TYPES.NUMBER },
-  [E_DF_NAMES.U32]: { "fn": faking.u32, "return_type": E_FAKING_RETURN_TYPES.NUMBER },
-  [E_DF_NAMES.U64]: { "fn": faking.u64, "return_type": E_FAKING_RETURN_TYPES.NUMBER },
-  [E_DF_NAMES.USIZE]: { "fn": faking.usize, "return_type": E_FAKING_RETURN_TYPES.NUMBER },
+  [E_DF_NAMES.U8]: { fn: faking.u8, return_type: E_FAKING_RETURN_TYPES.NUMBER },
+  [E_DF_NAMES.U16]: {
+    fn: faking.u16,
+    return_type: E_FAKING_RETURN_TYPES.NUMBER,
+  },
+  [E_DF_NAMES.U32]: {
+    fn: faking.u32,
+    return_type: E_FAKING_RETURN_TYPES.NUMBER,
+  },
+  [E_DF_NAMES.U64]: {
+    fn: faking.u64,
+    return_type: E_FAKING_RETURN_TYPES.NUMBER,
+  },
+  [E_DF_NAMES.USIZE]: {
+    fn: faking.usize,
+    return_type: E_FAKING_RETURN_TYPES.NUMBER,
+  },
 
-  [E_DF_NAMES.F32]: { "fn": faking.f32, "return_type": E_FAKING_RETURN_TYPES.NUMBER },
-  [E_DF_NAMES.F64]: { "fn": faking.f64, "return_type": E_FAKING_RETURN_TYPES.NUMBER },
+  [E_DF_NAMES.F32]: {
+    fn: faking.f32,
+    return_type: E_FAKING_RETURN_TYPES.NUMBER,
+  },
+  [E_DF_NAMES.F64]: {
+    fn: faking.f64,
+    return_type: E_FAKING_RETURN_TYPES.NUMBER,
+  },
 
   // defaults - names
-  "Male prefix standard": { "fn": faking.male_prefix_standard, "return_type": E_FAKING_RETURN_TYPES.STRING },
-  "Female prefix standard": { "fn": faking.female_prefix_standard, "return_type": E_FAKING_RETURN_TYPES.STRING },
-  "Male prefix": { "fn": faking.male_prefix, "return_type": E_FAKING_RETURN_TYPES.STRING },
-  "Female prefix": { "fn": faking.female_prefix, "return_type": E_FAKING_RETURN_TYPES.STRING },
+  "Male prefix standard": {
+    fn: faking.male_prefix_standard,
+    return_type: E_FAKING_RETURN_TYPES.STRING,
+  },
+  "Female prefix standard": {
+    fn: faking.female_prefix_standard,
+    return_type: E_FAKING_RETURN_TYPES.STRING,
+  },
+  "Male prefix": {
+    fn: faking.male_prefix,
+    return_type: E_FAKING_RETURN_TYPES.STRING,
+  },
+  "Female prefix": {
+    fn: faking.female_prefix,
+    return_type: E_FAKING_RETURN_TYPES.STRING,
+  },
 
-  "Male First Name": { "fn": faking.male_first_name, "return_type": E_FAKING_RETURN_TYPES.STRING },
-  "Last Name": { "fn": faking.last_name, "return_type": E_FAKING_RETURN_TYPES.STRING },
+  "Male First Name": {
+    fn: faking.male_first_name,
+    return_type: E_FAKING_RETURN_TYPES.STRING,
+  },
+  "Last Name": {
+    fn: faking.last_name,
+    return_type: E_FAKING_RETURN_TYPES.STRING,
+  },
 };
 
 export const df_assoc = [
@@ -106,7 +169,6 @@ export const df_assoc = [
     title: E_DF_NAMES.UUID_V5,
     ex_data: "",
   },
-
 
   // defaults - types
   {
@@ -164,7 +226,6 @@ export const df_assoc = [
     title: E_DF_NAMES.F64,
     ex_data: "",
   },
-
 
   // defaults - name
   {
@@ -249,17 +310,62 @@ function CreateJSONObject(row: I_GeneratorRow): string {
   content += '"' + row.field_name + '"';
   content += ": ";
 
-  if (row.type.func && row.type.func.fn) {
-    switch(row.type.func.return_type) {
-      case E_FAKING_RETURN_TYPES.STRING: content += '"' + row.type.func.fn() + '"'; break;
-      case E_FAKING_RETURN_TYPES.NUMBER: content += row.type.func.fn(); break;
-      case E_FAKING_RETURN_TYPES.BOOLEAN: content += row.type.func.fn(); break;
+  if (row.null_percent == 0) {
+    if (row.type.func && row.type.func.fn) {
+      switch (row.type.func.return_type) {
+        case E_FAKING_RETURN_TYPES.STRING:
+          content += '"' + row.type.func.fn() + '"';
+          break;
+        case E_FAKING_RETURN_TYPES.NUMBER:
+          content += row.type.func.fn();
+          break;
+        case E_FAKING_RETURN_TYPES.BOOLEAN:
+          content += row.type.func.fn();
+          break;
 
-      default: content += '"' + row.type.func.fn() + '"'; break;
+        default:
+          content += '"' + row.type.func.fn() + '"';
+          break;
+      }
     }
+  } else {
+    const val = RandomInteger();
+    console.log(val);
+    if (val <= row.null_percent) {
+      if(row.null_str == "") {
+        content += "null";
+      } else {
+        content += row.null_str;
+      }
+    } else {
+      if (row.type.func && row.type.func.fn) {
+        switch (row.type.func.return_type) {
+          case E_FAKING_RETURN_TYPES.STRING:
+            content += '"' + row.type.func.fn() + '"';
+            break;
+          case E_FAKING_RETURN_TYPES.NUMBER:
+            content += row.type.func.fn();
+            break;
+          case E_FAKING_RETURN_TYPES.BOOLEAN:
+            content += row.type.func.fn();
+            break;
 
+          default:
+            content += '"' + row.type.func.fn() + '"';
+            break;
+        }
+      }
+    }
   }
 
   content += ", ";
+
+  // console.log(content);
+
   return content;
+}
+
+// generate a random number between 0 and 100
+function RandomInteger(): number {
+  return Math.round(Math.random() * 100);
 }

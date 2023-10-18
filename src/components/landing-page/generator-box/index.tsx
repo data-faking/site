@@ -135,10 +135,17 @@ function GeneratorBox() {
 	return (
 		<>
 			<div className="content__labels">
+				<div />
+
 				<h1>Field Name</h1>
 				<h1>Type</h1>
-				{/* <h1>Blank / Null Value</h1>
-				<h1>Blank / Null Percent</h1> */}
+
+				<div />
+
+				<h1>Null Value</h1>
+				<h1>%</h1>
+
+				<div />
 			</div>
 
 			<GeneratorLines />
