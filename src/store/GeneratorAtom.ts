@@ -53,13 +53,21 @@ export const GeneratorRowsStateData = atom<T_GeneratorRowsStateData>({
         null_percent: 0,
       },
 
-      // {
-      //   id: uuidv4(),
-      //   field_name: "active",
-      //   type: df_assoc[6],
-      //   null_str: "",
-      //   null_percent: 0,
-      // },
+      {
+        id: uuidv4(),
+        field_name: "active",
+        type: df_assoc[4],
+        null_str: "",
+        null_percent: 0,
+      },
+
+      {
+        id: uuidv4(),
+        field_name: "status_code",
+        type: df_assoc[11],
+        null_str: "",
+        null_percent: 0,
+      },
 
       // TODO: will need to have a field to specific params for a function
       // {
