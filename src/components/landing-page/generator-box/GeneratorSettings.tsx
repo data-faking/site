@@ -35,7 +35,14 @@ import {
     PreviewGeneratorDataStateData, T_SetPreviewGeneratorDataStateData
 } from "@src/store/PreviewGeneratorDataAtom";
 
-import { GenerateJSON, df_assoc, df_func } from "@src/data-faking/assoc";
+import {
+	// eslint-disable-next-line @typescript-eslint/no-unused-vars
+	GenerateCSV,
+	GenerateJSON,
+	df_assoc,
+	df_func
+} from "@src/data-faking/assoc";
+
 // import { produce } from "immer";
 import Input from "@src/components/commons/input";
 import { produce } from "immer";
@@ -108,20 +115,26 @@ function GeneratorSettings() {
 			}
 
 			const data = GenerateJSON(ns, 10);
-
 			try {
-				// data = data.substring(0, data.length - 3);
-				// data += "\n]";
-				// console.log("data");
 				// console.log(data);
 				const jd = JSON.parse(data);
-				// console.log("json");
 				// console.log(jd);
 				setPreviewGeneratorDataState(jd);
 			} catch (error) {
 				// TODO(clearfeld): show an error modal or something
 				console.error(error);
 			}
+
+			// const data = GenerateCSV(ns, 10);
+			// try {
+			// 	console.log(data);
+			// 	// const jd = JSON.parse(data);
+			// 	// console.log(jd);
+			// 	setPreviewGeneratorDataState(data);
+			// } catch (error) {
+			// 	// TODO(clearfeld): show an error modal or something
+			// 	console.error(error);
+			// }
 
 			return;
 		}

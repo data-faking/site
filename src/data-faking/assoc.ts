@@ -369,3 +369,66 @@ function CreateJSONObject(row: I_GeneratorRow): string {
 function RandomInteger(): number {
   return Math.round(Math.random() * 100);
 }
+
+export function GenerateCSV(
+  grs: T_GeneratorRowsStateData,
+  n_rows: number
+): string {
+  const rows = grs.rows;
+  // console.log(rows);
+  let content = "";
+
+  // TODO(clearfeld): add header gen option if not selected dont generate headers
+  for (let i = 0; i < rows.length; ++i) {
+    content += rows[i].field_name + ","
+  }
+  content = content.substr(0, content.length - 1);
+  content += "\n";
+
+
+  for (let r = 0; r < n_rows; ++r) {
+    let jobj = "";
+    for (let i = 0; i < rows.length; ++i) {
+      // console.log(rows[i]);
+
+      jobj += CreateCSVLine(rows[i]);
+    }
+    jobj = jobj.substr(0, jobj.length - 1);
+    jobj += "\n";
+    content += jobj;
+  }
+
+  // console.log(content);
+
+  return content;
+}
+
+function CreateCSVLine(row: I_GeneratorRow): string {
+  let content = "";
+
+  if (row.null_percent == 0) {
+    if (row.type.func && row.type.func.fn) {
+      content += row.type.func.fn();
+    }
+  } else {
+    const val = RandomInteger();
+    console.log(val);
+    if (val <= row.null_percent) {
+      if(row.null_str == "") {
+        content += "";
+      } else {
+        content += row.null_str;
+      }
+    } else {
+      if (row.type.func && row.type.func.fn) {
+        content += row.type.func.fn();
+      }
+    }
+  }
+
+  content += ",";
+
+  // console.log(content);
+
+  return content;
+}
