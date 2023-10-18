@@ -5,6 +5,7 @@ import { v4 as uuidv4 } from 'uuid';
 
 import {
     df_assoc,
+    // E_DF_NAMES,
     I_DFASSOC
 } from "@src/data-faking/assoc";
 
@@ -39,7 +40,7 @@ export const GeneratorRowsStateData = atom<T_GeneratorRowsStateData>({
       {
         id: uuidv4(),
         field_name: "first_name",
-        type: df_assoc[8],
+        type: df_assoc[21],
         null_str: "",
         null_percent: 0,
       },
@@ -47,7 +48,7 @@ export const GeneratorRowsStateData = atom<T_GeneratorRowsStateData>({
       {
         id: uuidv4(),
         field_name: "last_name",
-        type: df_assoc[9],
+        type: df_assoc[22],
         null_str: "",
         null_percent: 0,
       },

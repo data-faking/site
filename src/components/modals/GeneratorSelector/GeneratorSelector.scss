@@ -57,6 +57,8 @@
         grid-template-columns: 1fr 1fr 1fr;
         gap: 1rem;
         padding: 0.5rem;
+        height: calc(100% - 5.25rem);
+        overflow: auto;
     }
 
     &card__ {
