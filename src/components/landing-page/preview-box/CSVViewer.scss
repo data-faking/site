@@ -1,0 +1,22 @@
+.csv-table {
+  height: 100%;
+  width: 100%;
+  border-collapse: collapse;
+
+  tbody {
+    tr {
+      border: solid 1px var(--color-border);
+    }
+  }
+
+  td {
+    padding: 1em;
+  }
+
+  thead {
+    background-color: black;
+    height: 100%;
+    width: 100%;
+    padding: 2em;
+  }
+}
