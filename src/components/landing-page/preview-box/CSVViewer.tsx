@@ -29,12 +29,15 @@ interface Idata {
 //TODO make the table more pretty
 //TODO copy to clipboard feature
 //TODO option to include headers or not
+
+
 function CSVViewer(props: Props) {
 
     const { readString } = usePapaParse();
     const [headers, setHeaders] = useState<string[]>([]);
     const [contents, setContents] = useState<string[][]>([]);
     const [showRaw, setShowRaw] = useState(false);
+
 
     function makeTable() {
         readString(props.src, {
@@ -73,10 +76,11 @@ function CSVViewer(props: Props) {
     }
     return (
 
-        <div>
-            <div>
-                <button onClick={() => setShowRaw(false)}>Table</button>
-                <button onClick={() => setShowRaw(true)}> Raw</button>
+        <div className='csv-display'>
+            <div className='csv-display__options-wrapper'>
+                {/* //TODO find a better way to render selected button styles */}
+                {!showRaw ? <button className='csv-display__options-button--selected' onClick={() => setShowRaw(false)}>Table</button> : <button className='csv-display__options-button' onClick={() => setShowRaw(false)}>Table</button>}
+                {showRaw ? <button className='csv-display__options-button--selected' onClick={() => setShowRaw(true)}>Raw</button> : <button className='csv-display__options-button' onClick={() => setShowRaw(true)}>Raw</button>}
             </div>
             {showRaw ? <div><pre>{props.src}</pre></div> : makeTable()}
         </div >

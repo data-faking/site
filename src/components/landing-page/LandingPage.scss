@@ -96,6 +96,11 @@ $blue-primary: #006699;
     border-top: 0.0625rem solid var(--color-border);
     border-bottom: 0.0625rem solid var(--color-border);
     height: 5em;
+
+    button {
+      cursor: pointer;
+    }
+
     &-left {
       height: 100%;
       border-right: 0.0625rem solid var(--color-border);
@@ -145,7 +150,6 @@ $blue-primary: #006699;
     }
   }
 }
-
 
 // /* width */
 // ::-webkit-scrollbar {

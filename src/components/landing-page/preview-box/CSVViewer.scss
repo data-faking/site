@@ -5,18 +5,51 @@
 
   tbody {
     tr {
-      border: solid 1px var(--color-border);
+      border: solid 2px var(--color-border);
     }
   }
 
   td {
-    padding: 1em;
+    padding: 0.25em;
   }
 
   thead {
-    background-color: black;
-    height: 100%;
-    width: 100%;
-    padding: 2em;
+    border-bottom: solid 2px var(--color-border);
+    border-left: solid 2px var(--color-border);
+    border-right: solid 2px var(--color-border);
+
+    th {
+      padding: 0.25em;
+    }
+  }
+}
+
+.csv-display {
+  &__options-wrapper {
+    display: flex;
+    justify-content: center;
+    border-bottom: solid 2px var(--color-border);
+    //padding: 1em;
+  }
+  &__options-button {
+    height: 3em;
+    width: 5em;
+    border-style: none;
+    background-color: transparent;
+    font-size: 16px;
+    color: var(--color-text);
+    cursor: pointer;
+
+    &--selected {
+      height: 3em;
+      width: 5em;
+      border-style: none;
+      background-color: transparent;
+      font-size: 16px;
+      color: var(--color-text);
+      cursor: pointer;
+      border-bottom: 2px solid #006699;
+      transition: all 0.2s ease;
+    }
   }
 }
