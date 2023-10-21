@@ -32,7 +32,7 @@ import {
 	// I_GeneratorRow,
 } from "@src/store/GeneratorSettingsAtom";
 import {
-    PreviewGeneratorDataStateData, T_SetPreviewGeneratorDataStateData
+	PreviewGeneratorDataStateData, T_SetPreviewGeneratorDataStateData
 } from "@src/store/PreviewGeneratorDataAtom";
 
 import {
@@ -76,8 +76,8 @@ function GeneratorSettings() {
 			}
 
 			// const data = GenerateJSON(getGeneratorRowsState);
-            let n_rows = getGeneratorSettingsState.rows;
-            if(n_rows > 1000) {
+			let n_rows = getGeneratorSettingsState.rows;
+			if (n_rows > 1000) {
 				n_rows = 1000;
 			} else if (n_rows < 1) {
 				n_rows = 1;
@@ -107,8 +107,8 @@ function GeneratorSettings() {
 			}
 
 			// const data = GenerateJSON(getGeneratorRowsState);
-            let n_rows = getGeneratorSettingsState.rows;
-            if(n_rows > 1000) {
+			let n_rows = getGeneratorSettingsState.rows;
+			if (n_rows > 1000) {
 				n_rows = 1000;
 			} else if (n_rows < 1) {
 				n_rows = 1;
@@ -125,16 +125,16 @@ function GeneratorSettings() {
 				console.error(error);
 			}
 
-			// const data = GenerateCSV(ns, 10);
-			// try {
-			// 	console.log(data);
-			// 	// const jd = JSON.parse(data);
-			// 	// console.log(jd);
-			// 	setPreviewGeneratorDataState(data);
-			// } catch (error) {
-			// 	// TODO(clearfeld): show an error modal or something
-			// 	console.error(error);
-			// }
+			/* const data = GenerateCSV(ns, 10);
+			try {
+				console.log(data);
+				// const jd = JSON.parse(data);
+				// console.log(jd);
+				setPreviewGeneratorDataState(data);
+			} catch (error) {
+				// TODO(clearfeld): show an error modal or something
+				console.error(error);
+			} */
 
 			return;
 		}

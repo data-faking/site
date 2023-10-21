@@ -2,19 +2,21 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import React, { useEffect } from "react";
 //import "./LandingPage.scss";
-import ReactJson, { ThemeKeys } from "react-json-view";
+//import ReactJson, { ThemeKeys } from "react-json-view";
 
 import {
-	useRecoilValue,
-	//useSetRecoilState,
-	// useSetRecoilState
+    useRecoilValue,
+    //useSetRecoilState,
+    // useSetRecoilState
 } from "recoil";
 import {
-	T_UserPreferencesData,
-	//T_SetUserPreferencesStateData,
-	UserPreferencesStateData,
+    T_UserPreferencesData,
+    //T_SetUserPreferencesStateData,
+    UserPreferencesStateData,
 } from "@src/store/UserPreferencesAtom";
 import { PreviewGeneratorDataStateData } from "@src/store/PreviewGeneratorDataAtom";
+//import CSVViewer from "./CSVViewer";
+import ReactJson, { ThemeKeys } from "react-json-view";
 
 //TODO resize some heights
 //TODO figure out why theres scroll bar (hint: its probably some 100vh error)
@@ -73,25 +75,27 @@ import { PreviewGeneratorDataStateData } from "@src/store/PreviewGeneratorDataAt
 ] */
 
 function PreviewBox() {
-	const getUserPreferencesState: T_UserPreferencesData = useRecoilValue(UserPreferencesStateData);
-	/* const setUserPreferencesState: T_SetUserPreferencesStateData =
+    const getUserPreferencesState: T_UserPreferencesData = useRecoilValue(UserPreferencesStateData);
+    console.log(getUserPreferencesState);
+    /* const setUserPreferencesState: T_SetUserPreferencesStateData =
         useSetRecoilState(UserPreferencesStateData); */
 
-	// eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
-	const getPreviewGeneratorData: any = useRecoilValue(PreviewGeneratorDataStateData);
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
+    const getPreviewGeneratorData: any = useRecoilValue(PreviewGeneratorDataStateData);
 
-	useEffect(() => {}, [getPreviewGeneratorData]);
+    useEffect(() => { }, [getPreviewGeneratorData]);
 
-	return (
-		<div className="content__right">
-			<div className="content__right-wrapper">
-				<ReactJson
-					src={getPreviewGeneratorData}
-					theme={getUserPreferencesState.jsonTheme as ThemeKeys}
-					style={{ backgroundColor: "transparent" }}
-				/>
-			</div>
-		</div>
-	);
+    return (
+        <div className="content__right">
+            <div className="content__right-wrapper">
+                {/* <CSVViewer src={getPreviewGeneratorData} /> */}
+                <ReactJson
+                    src={getPreviewGeneratorData}
+                    theme={getUserPreferencesState.jsonTheme as ThemeKeys}
+                    style={{ backgroundColor: "transparent" }}
+                />
+            </div>
+        </div>
+    );
 }
 export default PreviewBox;
