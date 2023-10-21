@@ -114,7 +114,7 @@ function GeneratorSettings() {
 				n_rows = 1;
 			}
 
-			/* const data = GenerateJSON(ns, 10);
+			const data = GenerateJSON(ns, 10);
 			try {
 				// console.log(data);
 				const jd = JSON.parse(data);
@@ -123,9 +123,9 @@ function GeneratorSettings() {
 			} catch (error) {
 				// TODO(clearfeld): show an error modal or something
 				console.error(error);
-			} */
+			}
 
-			const data = GenerateCSV(ns, 10);
+			/* const data = GenerateCSV(ns, 10);
 			try {
 				console.log(data);
 				// const jd = JSON.parse(data);
@@ -134,7 +134,7 @@ function GeneratorSettings() {
 			} catch (error) {
 				// TODO(clearfeld): show an error modal or something
 				console.error(error);
-			}
+			} */
 
 			return;
 		}

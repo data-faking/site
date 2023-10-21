@@ -15,7 +15,8 @@ import {
     UserPreferencesStateData,
 } from "@src/store/UserPreferencesAtom";
 import { PreviewGeneratorDataStateData } from "@src/store/PreviewGeneratorDataAtom";
-import CSVViewer from "./CSVViewer";
+//import CSVViewer from "./CSVViewer";
+import ReactJson, { ThemeKeys } from "react-json-view";
 
 //TODO resize some heights
 //TODO figure out why theres scroll bar (hint: its probably some 100vh error)
@@ -87,12 +88,12 @@ function PreviewBox() {
     return (
         <div className="content__right">
             <div className="content__right-wrapper">
-                <CSVViewer src={getPreviewGeneratorData} />
-                {/* <ReactJson
-					src={getPreviewGeneratorData}
-					theme={getUserPreferencesState.jsonTheme as ThemeKeys}
-					style={{ backgroundColor: "transparent" }}
-				/> */}
+                {/* <CSVViewer src={getPreviewGeneratorData} /> */}
+                <ReactJson
+                    src={getPreviewGeneratorData}
+                    theme={getUserPreferencesState.jsonTheme as ThemeKeys}
+                    style={{ backgroundColor: "transparent" }}
+                />
             </div>
         </div>
     );
