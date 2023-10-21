@@ -1,8 +1,8 @@
 
-
+import { ParseResult } from 'papaparse'
 import React, { useState } from 'react'
 
-import { usePapaParse, } from 'react-papaparse';
+import { usePapaParse } from 'react-papaparse';
 
 import './CSVViewer.scss';
 /* eslint-disable @typescript-eslint/no-explicit-any */
@@ -14,7 +14,7 @@ interface Props {
     src: string
 }
 
-interface Idata {
+/* interface Idata {
     data: string[][];
     errors: any;
     meta: {
@@ -22,7 +22,7 @@ interface Idata {
         linebreak: string;
         aborted: boolean;
     };
-}
+} */
 
 //TODO look into parse object typing
 //TODO phantom last row https://github.com/mholt/PapaParse/issues/447, skipEmptyLines is a workaround, maybe problem for null/empty values
@@ -45,7 +45,7 @@ function CSVViewer(props: Props) {
 
             //maybe have to change this for null/empty values
             skipEmptyLines: true,
-            complete: (results: Idata) => {
+            complete: (results: ParseResult<any>) => {
                 setHeaders(results.data[0]);
                 setContents(results.data.slice(1));
             }
@@ -53,12 +53,12 @@ function CSVViewer(props: Props) {
 
         return (
             <table className='csv-table'>
-                <thead>
+                <thead className='csv-table__header'>
                     <tr>
                         {headers.map((header, idx) => <th className='csv-table__header' key={idx}>{header}</th>)}
                     </tr>
                 </thead>
-                <tbody>
+                <tbody className='csv-table__body'>
                     {contents.map((content, idx) => {
                         return (
                             <tr key={idx}>

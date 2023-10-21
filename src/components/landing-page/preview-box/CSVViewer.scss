@@ -3,7 +3,7 @@
   width: 100%;
   border-collapse: collapse;
 
-  tbody {
+  &__body {
     tr {
       border: solid 2px var(--color-border);
     }
