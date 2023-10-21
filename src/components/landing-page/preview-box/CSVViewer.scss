@@ -4,21 +4,21 @@
   border-collapse: collapse;
 
   &__body {
-    tr {
+    &-row {
       border: solid 2px var(--color-border);
+    }
+
+    &-data {
+      padding: 0.25em;
     }
   }
 
-  td {
-    padding: 0.25em;
-  }
-
-  thead {
+  &__header {
     border-bottom: solid 2px var(--color-border);
     border-left: solid 2px var(--color-border);
     border-right: solid 2px var(--color-border);
 
-    th {
+    &-header-data {
       padding: 0.25em;
     }
   }

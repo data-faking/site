@@ -54,17 +54,17 @@ function CSVViewer(props: Props) {
         return (
             <table className='csv-table'>
                 <thead className='csv-table__header'>
-                    <tr>
-                        {headers.map((header, idx) => <th className='csv-table__header' key={idx}>{header}</th>)}
+                    <tr className='csv-table__header-row'>
+                        {headers.map((header, idx) => <th className='csv-table__header-data' key={idx}>{header}</th>)}
                     </tr>
                 </thead>
                 <tbody className='csv-table__body'>
                     {contents.map((content, idx) => {
                         return (
-                            <tr key={idx}>
+                            <tr key={idx} className='csv-table__body-row'>
                                 {content.map((value, idx) => {
                                     return (
-                                        <td key={idx}>{value}</td>
+                                        <td className='csv-table__body-data' key={idx}>{value}</td>
                                     )
                                 })}
                             </tr>
