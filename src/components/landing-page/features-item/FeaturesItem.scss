@@ -1,0 +1,33 @@
+.features-item {
+  padding: 10px;
+  border-radius: 8px;
+  //gap: 10px;
+  border: 1px solid #7d7cc1;
+  display: flex;
+  justify-content: center;
+  background: linear-gradient(
+    180deg,
+    rgba(35, 42, 91, 0.4) 0%,
+    rgba(0, 0, 0, 0) 84.37%,
+    rgba(35, 42, 91, 0.4) 100%
+  );
+  &__wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+  }
+
+  &__header {
+    font-size: 24px;
+  }
+
+  &__description {
+    font-size: 14px;
+  }
+
+  &__image {
+    height: auto;
+    width: 100%;
+  }
+}

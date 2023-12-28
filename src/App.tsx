@@ -21,6 +21,7 @@ import {
 import Navbar from "@src/components/navbar";
 import LandingPage from "@src/components/landing-page";
 import ModalEntryPoint from "@src/components/modals/ModalEntryPoint";
+import Footer from "./components/footer";
 
 function App() {
 	//const getCountState: T_CountStateData = useRecoilValue(CountStateData);
@@ -38,6 +39,8 @@ function App() {
 						<ModalEntryPoint />
 
 						<Outlet />
+
+						<Footer />
 					</>
 				}
 			>

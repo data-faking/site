@@ -1,0 +1,52 @@
+.hero-page {
+  background: radial-gradient(50% 50% at 50% 50%, #15112f 0%, #000 100%);
+  display: flex;
+  justify-content: center;
+  &__wrapper {
+    display: flex;
+    padding: 38px;
+    flex-direction: column;
+    align-items: center;
+    gap: 48px;
+    width: 65%;
+  }
+
+  &__header {
+    color: #fff;
+    text-align: center;
+    font-size: 64px;
+    &--accent {
+      color: #7058ff;
+    }
+  }
+
+  &__description {
+    color: #fff;
+    text-align: center;
+    font-size: 32px;
+  }
+
+  &__button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    padding: 14px 23px;
+    cursor: pointer;
+    outline: none;
+    border: none;
+    border-radius: 28px;
+    background: #7058ff;
+    color: #fff;
+    text-align: center;
+    font-size: 20px;
+  }
+
+  &__image {
+    height: auto;
+    width: 100%;
+    border: 1px solid #7058ff;
+    background-image: linear-gradient(to bottom, transparent, #837960),
+      url("../../assets/test-hero.png");
+  }
+}

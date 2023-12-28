@@ -1,0 +1,50 @@
+.features-page {
+  background: linear-gradient(180deg, #000 0%, #15112f 19.79%);
+  //background: linear-gradient(180deg, #000 0%, #15112f 100%);
+  display: flex;
+  justify-content: center;
+  //align-items: center;
+
+  &__header {
+    text-align: center;
+    color: #fff;
+    font-size: 64px;
+    &--accent {
+      color: #7058ff;
+    }
+  }
+
+  &__wrapper {
+    //display: flex;
+    padding: 20px;
+    //flex-direction: column;
+    //align-items: center;
+    gap: 10px;
+    //border: 1px solid pink;
+    max-width: 65%;
+  }
+
+  &__bento-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-areas:
+      "item0 item0 item1"
+      "item3 item2 item2";
+
+    gap: 2rem;
+    padding: 1rem;
+  }
+
+  .item0 {
+    grid-area: item0;
+  }
+  .item1 {
+    grid-area: item1;
+  }
+  .item2 {
+    grid-area: item2;
+  }
+  .item3 {
+    grid-area: item3;
+  }
+}

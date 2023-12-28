@@ -1,0 +1,33 @@
+.footer {
+  display: flex;
+  justify-content: center;
+  background: radial-gradient(50% 50% at 50% 50%, #15112f 0%, #000 100%);
+  &__wrapper {
+    border: 1px solid pink;
+    display: flex;
+    gap: 8rem;
+    padding: 1rem;
+    width: 65%;
+  }
+
+  &__left-section {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid green;
+    padding: 1rem;
+  }
+  &__logo {
+    flex-grow: 1;
+  }
+  &__right-section {
+    border: 1px solid greenyellow;
+    display: flex;
+  }
+
+  &__link-section {
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+    gap: 1rem;
+  }
+}
