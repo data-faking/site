@@ -1,8 +1,10 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import React from "react";
 import "./LandingPage.scss";
 
 import GeneratorBox from "./generator-box";
 import PreviewBox from "./preview-box";
+import RightArrowIcon from "../../assets/right-arrow.svg";
 //TODO resize some heights
 //TODO finish form and display
 //TODO refactor everything into components
@@ -95,9 +97,21 @@ import PreviewBox from "./preview-box";
 // 	},
 // ];
 
+//TODO fade image at the bottom
+//TODO typography
+//TODO shove into components
 function LandingPage() {
     return (
         <>
+            <div className="landing-page">
+                <div className="landing-page__wrapper">
+                    <h1 className="landing-page__header">Datamanz is a better way to generate <span className="landing-page__header--accent">fake data</span></h1>
+                    <p className="landing-page__description">Generate data that is realistic and consistent no matter where it lives.</p>
+                    <button className="landing-page__button">Get Started <img alt="right arrow" src={RightArrowIcon}></img></button>
+                    <img className="landing-page__image" src="../../assets/test-hero.png" alt="product example"></img>
+                </div>
+
+            </div>
             <div className="content">
                 <div className="content__left">
                     <GeneratorBox />
